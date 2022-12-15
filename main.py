@@ -3,6 +3,7 @@ from time import sleep
 from colorzero import Color, Hue
 from random import randrange
 import datetime
+from INA import INA219
 
 
 def brigtness():
@@ -10,12 +11,17 @@ def brigtness():
 
 
 tree = RGBXmasTree()
+ina219 = INA219(addr=0x43)
 
 step = 0
+bus_voltage = ina219.getBusVoltage_V()
+print("Percent:       {:3.1f}%".format(ina219.getCharge()))
+print("Load Voltage:  {:6.3f} V".format(bus_voltage))
 try:
     while True:
         now = datetime.datetime.now()
-        if now.hour >= 10 or (now.hour == 9 and now.minute >= 30):
+        # if now.hour >= 10 or (now.hour == 9 and now.minute >= 30):
+        if True:
             p = [[0, 0, 0, 0], ] * 25
             for i in range(step % 3, len(p), 3):
                 p[i] = [0, 255, 0, brigtness()]

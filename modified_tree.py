@@ -6,7 +6,7 @@ from random import randrange
 
 
 class RGBXmasTree(SourceMixin, SPIDevice):
-    def __init__(self, pixels=25, mosi_pin=12, clock_pin=25, *args, **kwargs):
+    def __init__(self, pixels=25, mosi_pin=10, clock_pin=11, *args, **kwargs):
         super(RGBXmasTree, self).__init__(mosi_pin=mosi_pin, clock_pin=clock_pin, *args, **kwargs)
         self._value = [(0, 0, 0, 0)] * pixels
         self.pixels = pixels
