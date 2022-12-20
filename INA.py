@@ -185,6 +185,9 @@ class INA219:
             value -= 65535
         return value * self._current_lsb
 
+    def isBattery(self):
+        return self.getCurrent_mA() < -4
+
     def getCharge(self):
         bus_voltage = self.getBusVoltage_V()
         p = (bus_voltage - 3) / 1.1 * 100
