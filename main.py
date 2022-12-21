@@ -1,8 +1,6 @@
 from modified_tree import RGBXmasTree
 from time import sleep
-from colorzero import Color, Hue
 from random import randrange
-import random
 import datetime
 from INA import INA219
 import math
@@ -17,9 +15,6 @@ ina219 = INA219(addr=0x43)
 
 step = 0
 bus_voltage = ina219.getBusVoltage_V()
-print("Percent:       {:3.1f}%".format(ina219.getCharge()))
-print("Load Voltage:  {:6.3f} V".format(bus_voltage))
-print(ina219.isBattery())
 external = [[0, 0, 0, 0], ] * 25
 try:
     battery = False
